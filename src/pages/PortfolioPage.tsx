@@ -102,7 +102,7 @@ export default function PortfolioPage({ onBack, onGetQuote }: PortfolioPageProps
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {portfolioItems.map((item, index) => (
             <FadeInSection key={item.id} delay={index * 100}>
-              <div className="group relative overflow-hidden rounded-xl bg-[#171717] border border-[#444444] hover:border-[#DA0037] transition-all duration-500 hover:scale-105 cursor-pointer">
+              <div className="group relative overflow-hidden rounded-xl bg-[#171717] border border-[#444444] hover:border-[#DA0037] hover:shadow-[0_0_40px_rgba(218,0,55,0.5)] transition-all duration-500 hover:scale-105 cursor-pointer">
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={item.thumbnail}
@@ -113,17 +113,21 @@ export default function PortfolioPage({ onBack, onGetQuote }: PortfolioPageProps
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                   {item.type === 'video' ? (
-                    <div className="w-16 h-16 bg-[#DA0037] rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#DA0037] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(218,0,55,0.8)] animate-pulse">
                       <Play className="w-8 h-8 text-[#EDEDED] ml-1" />
                     </div>
                   ) : (
-                    <div className="w-16 h-16 bg-[#DA0037] rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#DA0037] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(218,0,55,0.8)] animate-pulse">
                       <ImageIcon className="w-8 h-8 text-[#EDEDED]" />
                     </div>
                   )}
                 </div>
 
-                <div className="p-6">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute -inset-[2px] rounded-xl blur-xl bg-gradient-to-r from-[#DA0037]/40 via-[#DA0037]/20 to-[#DA0037]/40"></div>
+                </div>
+
+                <div className="p-6 relative z-10">
                   <span className="text-sm text-[#DA0037] font-semibold">{item.category}</span>
                   <h3 className="text-2xl font-bold text-[#EDEDED] mt-2">{item.title}</h3>
                 </div>

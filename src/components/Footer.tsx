@@ -1,4 +1,4 @@
-import { Mail, Phone, Instagram, Youtube } from 'lucide-react';
+import { Mail, Phone, Instagram, Youtube, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -56,15 +56,23 @@ export default function Footer() {
                 href="https://instagram.com/aelricon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-[#444444] rounded-lg flex items-center justify-center hover:bg-[#DA0037] transition-colors group"
+                className="w-12 h-12 bg-[#444444] rounded-lg flex items-center justify-center hover:bg-[#DA0037] hover:shadow-[0_0_20px_rgba(218,0,55,0.6)] transition-all duration-300 group"
               >
                 <Instagram className="w-6 h-6 text-[#EDEDED]" />
+              </a>
+              <a
+                href="https://x.com/aelricon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-[#444444] rounded-lg flex items-center justify-center hover:bg-[#DA0037] hover:shadow-[0_0_20px_rgba(218,0,55,0.6)] transition-all duration-300 group"
+              >
+                <Twitter className="w-6 h-6 text-[#EDEDED]" />
               </a>
               <a
                 href="https://youtube.com/@aelricon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-[#444444] rounded-lg flex items-center justify-center hover:bg-[#DA0037] transition-colors group"
+                className="w-12 h-12 bg-[#444444] rounded-lg flex items-center justify-center hover:bg-[#DA0037] hover:shadow-[0_0_20px_rgba(218,0,55,0.6)] transition-all duration-300 group"
               >
                 <Youtube className="w-6 h-6 text-[#EDEDED]" />
               </a>

@@ -9,6 +9,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ icon: Icon, title, description }: ServiceCardProps) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -18,6 +19,8 @@ export default function ServiceCard({ icon: Icon, title, description }: ServiceC
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+
+    setMousePos({ x, y });
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
@@ -47,17 +50,24 @@ export default function ServiceCard({ icon: Icon, title, description }: ServiceC
     >
       <div className="relative bg-[#171717] border border-[#444444] rounded-xl p-8 overflow-hidden">
         {isHovered && (
-          <div
-            className="absolute inset-0 opacity-30 pointer-events-none"
-            style={{
-              background: `radial-gradient(circle at ${isHovered ? '50% 50%' : '0% 0%'}, rgba(218, 0, 55, 0.4), transparent 70%)`,
-              transition: 'opacity 0.3s ease',
-            }}
-          />
+          <>
+            <div
+              className="absolute inset-0 opacity-40 pointer-events-none transition-opacity duration-300"
+              style={{
+                background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(218, 0, 55, 0.15), transparent 40%)`,
+              }}
+            />
+            <div
+              className="absolute -inset-[2px] rounded-xl opacity-75 blur-xl pointer-events-none transition-opacity duration-300"
+              style={{
+                background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(218, 0, 55, 0.4), transparent 40%)`,
+              }}
+            />
+          </>
         )}
 
         <div className="relative z-10">
-          <div className="w-14 h-14 bg-[#DA0037] rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="w-14 h-14 bg-[#DA0037] rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(218,0,55,0.5)]">
             <Icon className="w-7 h-7 text-[#EDEDED]" />
           </div>
 
@@ -65,7 +75,7 @@ export default function ServiceCard({ icon: Icon, title, description }: ServiceC
           <p className="text-[#EDEDED]/70 leading-relaxed">{description}</p>
         </div>
 
-        <div className="absolute inset-0 border-2 border-[#DA0037] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+        <div className="absolute inset-0 border-2 border-[#DA0037] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-[0_0_30px_rgba(218,0,55,0.6)]"></div>
       </div>
     </div>
   );
